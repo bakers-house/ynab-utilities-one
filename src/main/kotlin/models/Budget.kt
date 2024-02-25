@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class BudgetResponse(
+data class BudgetResponse (
     val data: BudgetData
 )
 
@@ -26,12 +26,12 @@ data class Budget (
 )
 
 @JsonClass(generateAdapter = true)
-data class BudgetDateFormat(
+data class BudgetDateFormat (
     val format: String
 )
 
 @JsonClass(generateAdapter = true)
-data class BudgetCurrencyFormat(
+data class BudgetCurrencyFormat (
     @Json(name = "currency_symbol") val currencySymbol: String,
     @Json(name = "decimal_digits") val decimalDigits: Int,
     @Json(name = "decimal_separator") val decimalSeparator: Char,
