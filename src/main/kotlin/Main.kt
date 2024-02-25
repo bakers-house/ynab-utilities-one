@@ -61,6 +61,7 @@ fun main() {
 
     var budgetMonth = ""
 
+    // TODO: Allow multiple months to be selected, based on their year.
     val budgetMonthsRequest = Request.Builder()
         .url("https://api.ynab.com/v1/budgets/$budgetId/months")
         .addHeader("Authorization", "Bearer $token")
@@ -82,6 +83,7 @@ fun main() {
         budgetMonth = budgetMonthsInfo.data.months[selection].month
     }
 
+    // TODO: Move this request into a method, so it can be called with multiple months.
     val transactionsRequest = Request.Builder()
         .url("https://api.ynab.com/v1/budgets/$budgetId/transactions?since_date=$budgetMonth")
         .addHeader("Authorization", "Bearer $token")
@@ -121,3 +123,7 @@ fun main() {
         println("Category five waste this month: ${totalCategoryFiveWaste / 1000}")
     }
 }
+
+// TODO: Dump results in a table, with date, payee name, category name, amount and memo. Split table per month.
+// TODO: Calculate totals for the entire year.
+// TODO: Compare results with last year, per month/category.
