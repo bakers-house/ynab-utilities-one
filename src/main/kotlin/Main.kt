@@ -28,12 +28,13 @@ fun main() {
     val token: String = getToken("src/main/resources/ynab_api_token.txt".toPath())
 
     val moshi: Moshi = Moshi.Builder().build()
+
     val budgetAdapter: JsonAdapter<BudgetResponse> = moshi.adapter(BudgetResponse::class.java)
     val budgetMonthsAdapter: JsonAdapter<BudgetMonthsResponse> = moshi.adapter(BudgetMonthsResponse::class.java)
     val budgetTransactionsAdapter: JsonAdapter<BudgetTransactionsResponse> = moshi.adapter(BudgetTransactionsResponse::class.java)
 
     val client = OkHttpClient()
-    val budgetsRequest = Request.Builder()
+    val budgetsRequest = Request.Builder() // TODO: Move the request builder to a helper method. Parameterise just the endpoint.
         .url("https://api.ynab.com/v1/budgets")
         .addHeader("Authorization", "Bearer $token")
         .build()
